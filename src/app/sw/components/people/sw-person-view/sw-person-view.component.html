@@ -1,0 +1,58 @@
+<dl>
+  <dt>Name</dt>
+  <dd>{{parsedData().name}}</dd>
+  <dt>Birth Year</dt>
+  <dd>{{parsedData().birth_year}}</dd>
+  <dt>Gender</dt>
+  <dd>{{parsedData().gender}}</dd>
+  <dt>Height</dt>
+  <dd>{{parsedData().height}} cm.</dd>
+  <dt>Mass</dt>
+  <dd>{{parsedData().mass}} kg.</dd>
+  <dt>HomeWorld</dt>
+  <dd>
+
+    @let homeworld =parsedData().homeworld();
+    @switch (homeworld) {
+      @case (undefined) {
+        Loading..
+      }
+      @case(null){
+        -
+      }@default {
+        {{homeworld.name}}
+      }
+    }
+  </dd>
+  <dt>Species</dt>
+  <dd>
+    @if (parsedData().species.length>0) {
+
+      <ul>
+        @for (item of parsedData().species; track $index) {
+          <li>
+            @let $item = item();
+            @switch ($item) {
+              @case (undefined) {
+                Loadgin...
+              }
+              @case (null) {
+                -
+              }@default {
+                {{$item.name}}
+              }
+            }
+          </li>
+        }
+      </ul>
+    } @else {
+      --
+    }
+  </dd>
+</dl>
+
+<dt>Created</dt>
+  <dd>{{parsedData().created | date:'medium'}}</dd>
+
+  <dt>Edited</dt>
+  <dd>{{parsedData().edited | date:'medium'}}</dd>

@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup()" (ngSubmit)="onSubmit()">
+  <label for="">
+    <b>Search</b>
+    <input type="text" formControlName="search">
+  </label>
+  <button type="button" (click)="clear()">X</button>
+</form>
+<div>
+  <button type="button" [disabled]="!parsedData().previous" (click)="onPage(parsedData().previous)">previous</button>
+  <button type="button" [disabled]="!parsedData().next" (click)="onPage(parsedData().next)">next</button>
+</div>
+@if(isLoading()){
+Loading...
+} @else {
+@if(parsedData().results.length>0){
+<div class="-cmp-resource-list">
+  @for(item of parsedData().results; track item){
+  <button type="button" (click)="itemSelect.emit(item.id)">{{ item.name }} {{item.id}} </button>
+  }
+</div>
+
+
+}@else {
+Not Found !!!
+}
+}
