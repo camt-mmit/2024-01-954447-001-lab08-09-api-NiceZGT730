@@ -1,0 +1,24 @@
+@switch (this.oauthService.ready()) {
+@case (undefined) {
+Loading...
+}
+@case(false){
+<button type="button" (click)="authorize()">Google.com</button>
+}
+@default {
+<div>
+  <button type="button" (click)="oauthService.clear()">Remove Token</button>
+</div>
+
+<nav>
+  <ul>
+    <li>
+      <a routerLink="events" routerLinkActive="app-st-active">Event</a>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet />
+
+}
+}

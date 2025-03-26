@@ -1,0 +1,8 @@
+<div>
+  <a routerLink="create">
+    <button type="button">Create</button>
+  </a>
+</div>
+
+<app-gl-events-list [data]="dataResource.value()" [queryParams]="queryParams()"
+  (queryParamsChange)="onQueryParamsChange($event)" (reload)="dataResource.reload()" />

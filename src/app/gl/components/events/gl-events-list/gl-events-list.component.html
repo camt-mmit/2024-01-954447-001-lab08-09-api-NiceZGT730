@@ -1,0 +1,19 @@
+<form [formGroup]="formGroup()" (ngSubmit)="onSubmit()">
+  <label>
+    <b>Search</b>
+    <input type="text" formControlName="q" />
+
+  </label>
+  <button type="button" (click)="clear()">X</button>
+</form>
+<div>
+  <button type="button" (click)="reload.emit()" > Reload</button>
+</div>
+
+@for (item of parseData()?.items; track item.id) {
+<section>
+  <h3>{{item.summary}}</h3>
+  <p>{{item.description}}</p>
+  <footer>{{item.displayDateTime}}</footer>
+</section>
+}
