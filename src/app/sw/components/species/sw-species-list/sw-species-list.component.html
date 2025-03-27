@@ -1,0 +1,23 @@
+<!-- src/app/sw/sw-species-list/sw-species-list.component.html -->
+<div class="species-list">
+  <h2>Species List</h2>
+
+  <div class="pagination">
+    <button (click)="goToPreviousPage()" [disabled]="!previousUrl()">
+      Previous
+    </button>
+    <button (click)="goToNextPage()" [disabled]="!nextUrl()">Next</button>
+  </div>
+
+  @if (species().length === 0) {
+    <p>Loading species...</p>
+  }
+
+  @for (spec of species(); track spec.url; let i = $index) {
+    <div class="species-item">
+      <a [routerLink]="['/star-war/species', i + 1]">
+        <h3>{{ spec.name }}</h3>
+      </a>
+    </div>
+  }
+</div>

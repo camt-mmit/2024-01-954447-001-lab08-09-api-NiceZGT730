@@ -1,0 +1,15 @@
+<div class="species-view">
+  @if (!species()) {
+    <p>Loading species details...</p>
+  } @else {
+    <h2>{{ species()!.name }}</h2>
+    <p>Classification: {{ species()!.classification }}</p>
+    <p>Designation: {{ species()!.designation }}</p>
+    <p>Average Height: {{ species()!.average_height }}cm</p>
+    <p>Skin Colors: {{ species()!.skin_colors }}</p>
+    <p>Hair Colors: {{ species()!.hair_colors }}</p>
+    <p>Eye Colors: {{ species()!.eye_colors }}</p>
+    <p>Average Lifespan: {{ species()!.average_lifespan }}</p>
+    <p>Language: {{ species()!.language }}</p>
+  }
+</div>

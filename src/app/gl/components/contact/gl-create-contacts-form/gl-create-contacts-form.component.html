@@ -1,0 +1,12 @@
+<!-- src/app/gl-contacts-create/gl-contacts-create.component.html -->
+<h3>Create New Contact</h3>
+<input [(ngModel)]="newContact.givenName" placeholder="First Name" />
+<input [(ngModel)]="newContact.familyName" placeholder="Last Name" />
+<input [(ngModel)]="newContact.email" placeholder="Email" type="email" />
+<input [(ngModel)]="newContact.phone" placeholder="Phone Number" type="tel" />
+<!-- เพิ่ม Phone -->
+<input [(ngModel)]="newContact.company" placeholder="Company" />
+<!-- เพิ่ม Company -->
+<button (click)="createContact()">Add Contact</button>
+<button routerLink="../">Back to List</button>
+<p *ngIf="error">{{ error }}</p>

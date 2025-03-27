@@ -1,0 +1,14 @@
+<!-- src/app/gl-contacts-list/gl-contacts-list.component.html -->
+<h2>Contacts List</h2>
+<button routerLink="create">Create Contact</button>
+<ul>
+  <li *ngFor="let contact of contacts">
+    {{ getDisplayName(contact) || "No name" }} -
+    {{ getEmail(contact) || "No email" }} -
+    {{ getPhone(contact) || "No phone" }} -
+    {{ getCompany(contact) || "No company" }}
+  </li>
+</ul>
+<p *ngIf="contacts.length === 0 && !error">No contacts found</p>
+
+<p *ngIf="error">{{ error }}</p>

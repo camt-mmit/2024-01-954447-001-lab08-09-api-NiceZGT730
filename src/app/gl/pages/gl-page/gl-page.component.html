@@ -1,24 +1,28 @@
 @switch (this.oauthService.ready()) {
-@case (undefined) {
-Loading...
-}
-@case(false){
-<button type="button" (click)="authorize()">Google.com</button>
-}
-@default {
-<div>
-  <button type="button" (click)="oauthService.clear()">Remove Token</button>
-</div>
+  @case (undefined) {
+    Loading...
+  }
+  @case (false) {
+    <button type="button" (click)="authorize()">Google.com</button>
+  }
+  @default {
+    <div>
+      <button type="button" (click)="oauthService.clear()">Remove Token</button>
+    </div>
 
-<nav>
-  <ul>
-    <li>
-      <a routerLink="events" routerLinkActive="app-st-active">Event</a>
-    </li>
-  </ul>
-</nav>
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="events" routerLinkActive="app-st-active">Event</a>
+        </li>
+        <li>
+          <a routerLink="/google/contacts" routerLinkActive="app-st-active"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-<router-outlet />
-
-}
+    <router-outlet />
+  }
 }

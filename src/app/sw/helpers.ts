@@ -1,5 +1,5 @@
 import { signal, Signal, untracked } from '@angular/core';
-import { Person, Resource, ResourceList } from './models';
+import { Person, Planet, Resource, ResourceList, Species } from './models';
 
 export const apiURL = 'https://swapi.dev/api/';
 
@@ -112,4 +112,56 @@ export function parsePersonList(resourceList: ResourceList<Person>) {
     ...parsedResourceList,
     results: readonlyArray(results.map(parsePerson)),
   } as const;
+}
+
+export function parseSpecies(data: any): Species {
+  if (!data) return {} as Species; // ✅ ป้องกัน undefined
+  return {
+    name: data.name || '',
+    classification: data.classification || '',
+    designation: data.designation || '',
+    average_height: data.average_height || '',
+    skin_colors: data.skin_colors || '',
+    hair_colors: data.hair_colors || '',
+    eye_colors: data.eye_colors || '',
+    average_lifespan: data.average_lifespan || '',
+    homeworld: data.homeworld || '',
+    language: data.language || '',
+    people: data.people || [],
+    films: data.films || [],
+    created: data.created || '',
+    edited: data.edited || '',
+    url: data.url || '',
+  };
+}
+
+export function parseSpeciesList(data: any): Species[] {
+  if (!data || !Array.isArray(data.results)) {
+    console.warn('Invalid species list format:', data);
+    return [];
+  }
+  return data.results.map((item: any) => parseSpecies(item));
+}
+
+export function parsePlanet(data: any): Planet {
+  return {
+    name: data.name || '',
+    rotation_period: data.rotation_period || '',
+    orbital_period: data.orbital_period || '',
+    diameter: data.diameter || '',
+    climate: data.climate || '',
+    gravity: data.gravity || '',
+    terrain: data.terrain || '',
+    surface_water: data.surface_water || '',
+    population: data.population || '',
+    residents: data.residents || [],
+    films: data.films || [],
+    created: data.created || '',
+    edited: data.edited || '',
+    url: data.url || '',
+  };
+}
+
+export function parsePlanetsList(data: any): Planet[] {
+  return data.results.map((item: any) => parsePlanet(item));
 }
