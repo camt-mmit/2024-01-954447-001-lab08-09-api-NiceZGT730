@@ -26,7 +26,7 @@ export default [
         accessTokenUrl: 'https://oauth2.googleapis.com/token',
 
         redirectUri: isDevMode()
-          ? 'http://localhost:4200/google/authorization '
+          ? 'http://localhost:4200/google/authorization'
           : 'https://camt-mmit.github.io/2024-01-954447-001-lab08-09-api-NiceZGT730/google/authorization ',
       }),
     ],
